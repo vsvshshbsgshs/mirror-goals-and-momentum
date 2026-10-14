@@ -12,18 +12,24 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setThemeState] = useState<Theme>(() => {
+  // Always start on light so SSR and first client render match; the stored
+  // preference is applied right after hydration.
+  const [theme, setThemeState] = useState<Theme>('light');
+
+  useEffect(() => {
     try {
       const saved = localStorage.getItem('delux_theme');
-      if (saved === 'dark' || saved === 'light') return saved;
-      if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
+      if (saved === 'dark' || saved === 'light') {
+        setThemeState(saved);
+        return;
+      }
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setThemeState('dark');
       }
     } catch {
-      // Fallback if localStorage or window is unavailable
+      // ignore
     }
-    return 'light';
-  });
+  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
