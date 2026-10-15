@@ -5,7 +5,6 @@ import { DeluxLogo } from '../../components/common/DeluxLogo';
 import { PrimaryButton } from '../../components/common/Buttons';
 import { FormField } from '../../components/common/CommonComponents';
 import { ThemeToggle } from '../../components/common/ThemeToggle';
-import { ShieldCheck } from 'lucide-react';
 
 export const RegisterPage: React.FC = () => {
   const { register } = useAuth();
