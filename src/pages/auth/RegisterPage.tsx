@@ -88,8 +88,6 @@ export const RegisterPage: React.FC = () => {
           </p>
         </div>
 
-        </div>
-
         {error && (
           <div className="mb-5 p-3.5 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/60 text-rose-700 dark:text-rose-300 text-xs rounded-xl font-medium">
             {error}
