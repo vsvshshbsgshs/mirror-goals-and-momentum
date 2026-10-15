@@ -55,7 +55,7 @@ export const api = {
       data: { session },
     } = await supabase.auth.getSession();
     if (!session?.user) throw new Error("Não autenticado.");
-    const update: Record<string, any> = { updated_at: new Date().toISOString() };
+    const update: Record<string, any> = { updated_at: new Date().toISOString() } as any;
     if (profileData.full_name !== undefined) update.full_name = profileData.full_name;
     if (profileData.timezone !== undefined) update.timezone = profileData.timezone;
     if (profileData.avatar_url !== undefined) update.avatar_url = profileData.avatar_url;
@@ -81,7 +81,7 @@ export const api = {
 
   // Preferences
   async getPreferences(): Promise<{ preferences: UserPreferences }> {
-    return fns.getPreferences({ data: {} });
+    return fns.getPreferences({ data: undefined as any });
   },
 
   async updatePreferences(pref: Partial<UserPreferences>): Promise<{ preferences: UserPreferences }> {
@@ -90,7 +90,7 @@ export const api = {
 
   // Goals
   async getGoals(): Promise<{ goals: Goal[] }> {
-    return fns.getGoals({ data: {} });
+    return fns.getGoals({ data: undefined as any });
   },
 
   async getGoal(id: string): Promise<{ goal: Goal }> {
@@ -153,21 +153,21 @@ export const api = {
 
   // Planner
   async getPlanner(): Promise<{ days: any[]; goals: Goal[]; preferences: UserPreferences }> {
-    return fns.getPlanner({ data: {} });
+    return fns.getPlanner({ data: undefined as any });
   },
 
   async rebalancePlanner(): Promise<{ success: boolean; rescheduledCount: number; message: string }> {
-    return fns.rebalancePlanner({ data: {} });
+    return fns.rebalancePlanner({ data: undefined as any });
   },
 
   // Activity & Metrics
   async getActivity(): Promise<{ events: ActivityEvent[]; metrics: any }> {
-    return fns.getActivity({ data: {} });
+    return fns.getActivity({ data: undefined as any });
   },
 
   // Notifications
   async getNotifications(): Promise<{ notifications: AppNotification[] }> {
-    return fns.getNotifications({ data: {} });
+    return fns.getNotifications({ data: undefined as any });
   },
 
   async markNotificationRead(id: string): Promise<{ success: boolean }> {
@@ -176,16 +176,16 @@ export const api = {
 
   // Subscription
   async getSubscription(): Promise<{ subscription: Subscription }> {
-    return fns.getSubscription({ data: {} });
+    return fns.getSubscription({ data: undefined as any });
   },
 
   async toggleSubscription(): Promise<{ subscription: Subscription }> {
-    return fns.toggleSubscription({ data: {} });
+    return fns.toggleSubscription({ data: undefined as any });
   },
 
   // Assistant
   async getConversations(): Promise<{ conversations: AssistantConversation[] }> {
-    return fns.getConversations({ data: {} });
+    return fns.getConversations({ data: undefined as any });
   },
 
   async getMessages(
