@@ -43,7 +43,7 @@ export function useNavigate() {
 }
 
 export function useParams<T extends Record<string, string> = Record<string, string>>(): T {
-  return useTanParams({ strict: false }) as T;
+  return useTanParams({ strict: false } as any) as T;
 }
 
 export function useLocation() {
