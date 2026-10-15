@@ -72,7 +72,7 @@ export const DesktopSidebar: React.FC = () => {
               key={item.to}
               to={item.to}
               onClick={() => playSelectSound()}
-              className={({ isActive }) => {
+              className={({ isActive }: { isActive: boolean }) => {
                 if (isAssistant) {
                   return `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm transition-all duration-150 ${
                     isActive
