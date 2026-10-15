@@ -10,33 +10,222 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/app'
+import { Route as AssinaturaRouteImport } from './routes/assinatura'
+import { Route as CadastroRouteImport } from './routes/cadastro'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as RecuperarSenhaRouteImport } from './routes/recuperar-senha'
+import { Route as RedefinirSenhaRouteImport } from './routes/redefinir-senha'
+import { Route as AppIndexRouteImport } from './routes/app/index'
+import { Route as AppAssistenteRouteImport } from './routes/app/assistente'
+import { Route as AppInicioRouteImport } from './routes/app/inicio'
+import { Route as AppObjetivosRouteImport } from './routes/app/objetivos'
+import { Route as AppPerfilRouteImport } from './routes/app/perfil'
+import { Route as AppPlanejamentoRouteImport } from './routes/app/planejamento'
+import { Route as AppObjetivosIdRouteImport } from './routes/app/objetivos.$id'
+import { Route as AppObjetivosNovoRouteImport } from './routes/app/objetivos.novo'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssinaturaRoute = AssinaturaRouteImport.update({
+  id: '/assinatura',
+  path: '/assinatura',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CadastroRoute = CadastroRouteImport.update({
+  id: '/cadastro',
+  path: '/cadastro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecuperarSenhaRoute = RecuperarSenhaRouteImport.update({
+  id: '/recuperar-senha',
+  path: '/recuperar-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RedefinirSenhaRoute = RedefinirSenhaRouteImport.update({
+  id: '/redefinir-senha',
+  path: '/redefinir-senha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssistenteRoute = AppAssistenteRouteImport.update({
+  id: '/assistente',
+  path: '/assistente',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInicioRoute = AppInicioRouteImport.update({
+  id: '/inicio',
+  path: '/inicio',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppObjetivosRoute = AppObjetivosRouteImport.update({
+  id: '/objetivos',
+  path: '/objetivos',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPerfilRoute = AppPerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPlanejamentoRoute = AppPlanejamentoRouteImport.update({
+  id: '/planejamento',
+  path: '/planejamento',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppObjetivosIdRoute = AppObjetivosIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AppObjetivosRoute,
+} as any)
+const AppObjetivosNovoRoute = AppObjetivosNovoRouteImport.update({
+  id: '/novo',
+  path: '/novo',
+  getParentRoute: () => AppObjetivosRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/assinatura': typeof AssinaturaRoute
+  '/cadastro': typeof CadastroRoute
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/redefinir-senha': typeof RedefinirSenhaRoute
+  '/app/assistente': typeof AppAssistenteRoute
+  '/app/inicio': typeof AppInicioRoute
+  '/app/objetivos': typeof AppObjetivosRouteWithChildren
+  '/app/perfil': typeof AppPerfilRoute
+  '/app/planejamento': typeof AppPlanejamentoRoute
+  '/app/': typeof AppIndexRoute
+  '/app/objetivos/$id': typeof AppObjetivosIdRoute
+  '/app/objetivos/novo': typeof AppObjetivosNovoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assinatura': typeof AssinaturaRoute
+  '/cadastro': typeof CadastroRoute
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/redefinir-senha': typeof RedefinirSenhaRoute
+  '/app/assistente': typeof AppAssistenteRoute
+  '/app/inicio': typeof AppInicioRoute
+  '/app/objetivos': typeof AppObjetivosRouteWithChildren
+  '/app/perfil': typeof AppPerfilRoute
+  '/app/planejamento': typeof AppPlanejamentoRoute
+  '/app': typeof AppIndexRoute
+  '/app/objetivos/$id': typeof AppObjetivosIdRoute
+  '/app/objetivos/novo': typeof AppObjetivosNovoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/assinatura': typeof AssinaturaRoute
+  '/cadastro': typeof CadastroRoute
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/recuperar-senha': typeof RecuperarSenhaRoute
+  '/redefinir-senha': typeof RedefinirSenhaRoute
+  '/app/assistente': typeof AppAssistenteRoute
+  '/app/inicio': typeof AppInicioRoute
+  '/app/objetivos': typeof AppObjetivosRouteWithChildren
+  '/app/perfil': typeof AppPerfilRoute
+  '/app/planejamento': typeof AppPlanejamentoRoute
+  '/app/': typeof AppIndexRoute
+  '/app/objetivos/$id': typeof AppObjetivosIdRoute
+  '/app/objetivos/novo': typeof AppObjetivosNovoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/assinatura'
+    | '/cadastro'
+    | '/login'
+    | '/onboarding'
+    | '/recuperar-senha'
+    | '/redefinir-senha'
+    | '/app/assistente'
+    | '/app/inicio'
+    | '/app/objetivos'
+    | '/app/perfil'
+    | '/app/planejamento'
+    | '/app/'
+    | '/app/objetivos/$id'
+    | '/app/objetivos/novo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/assinatura'
+    | '/cadastro'
+    | '/login'
+    | '/onboarding'
+    | '/recuperar-senha'
+    | '/redefinir-senha'
+    | '/app/assistente'
+    | '/app/inicio'
+    | '/app/objetivos'
+    | '/app/perfil'
+    | '/app/planejamento'
+    | '/app'
+    | '/app/objetivos/$id'
+    | '/app/objetivos/novo'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/assinatura'
+    | '/cadastro'
+    | '/login'
+    | '/onboarding'
+    | '/recuperar-senha'
+    | '/redefinir-senha'
+    | '/app/assistente'
+    | '/app/inicio'
+    | '/app/objetivos'
+    | '/app/perfil'
+    | '/app/planejamento'
+    | '/app/'
+    | '/app/objetivos/$id'
+    | '/app/objetivos/novo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
+  AssinaturaRoute: typeof AssinaturaRoute
+  CadastroRoute: typeof CadastroRoute
+  LoginRoute: typeof LoginRoute
+  OnboardingRoute: typeof OnboardingRoute
+  RecuperarSenhaRoute: typeof RecuperarSenhaRoute
+  RedefinirSenhaRoute: typeof RedefinirSenhaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +237,157 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assinatura': {
+      id: '/assinatura'
+      path: '/assinatura'
+      fullPath: '/assinatura'
+      preLoaderRoute: typeof AssinaturaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cadastro': {
+      id: '/cadastro'
+      path: '/cadastro'
+      fullPath: '/cadastro'
+      preLoaderRoute: typeof CadastroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recuperar-senha': {
+      id: '/recuperar-senha'
+      path: '/recuperar-senha'
+      fullPath: '/recuperar-senha'
+      preLoaderRoute: typeof RecuperarSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/redefinir-senha': {
+      id: '/redefinir-senha'
+      path: '/redefinir-senha'
+      fullPath: '/redefinir-senha'
+      preLoaderRoute: typeof RedefinirSenhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/': {
+      id: '/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/assistente': {
+      id: '/app/assistente'
+      path: '/assistente'
+      fullPath: '/app/assistente'
+      preLoaderRoute: typeof AppAssistenteRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/inicio': {
+      id: '/app/inicio'
+      path: '/inicio'
+      fullPath: '/app/inicio'
+      preLoaderRoute: typeof AppInicioRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/objetivos': {
+      id: '/app/objetivos'
+      path: '/objetivos'
+      fullPath: '/app/objetivos'
+      preLoaderRoute: typeof AppObjetivosRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/perfil': {
+      id: '/app/perfil'
+      path: '/perfil'
+      fullPath: '/app/perfil'
+      preLoaderRoute: typeof AppPerfilRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/planejamento': {
+      id: '/app/planejamento'
+      path: '/planejamento'
+      fullPath: '/app/planejamento'
+      preLoaderRoute: typeof AppPlanejamentoRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/objetivos/$id': {
+      id: '/app/objetivos/$id'
+      path: '/$id'
+      fullPath: '/app/objetivos/$id'
+      preLoaderRoute: typeof AppObjetivosIdRouteImport
+      parentRoute: typeof AppObjetivosRoute
+    }
+    '/app/objetivos/novo': {
+      id: '/app/objetivos/novo'
+      path: '/novo'
+      fullPath: '/app/objetivos/novo'
+      preLoaderRoute: typeof AppObjetivosNovoRouteImport
+      parentRoute: typeof AppObjetivosRoute
+    }
   }
 }
 
+interface AppObjetivosRouteChildren {
+  AppObjetivosIdRoute: typeof AppObjetivosIdRoute
+  AppObjetivosNovoRoute: typeof AppObjetivosNovoRoute
+}
+
+const AppObjetivosRouteChildren: AppObjetivosRouteChildren = {
+  AppObjetivosIdRoute: AppObjetivosIdRoute,
+  AppObjetivosNovoRoute: AppObjetivosNovoRoute,
+}
+
+const AppObjetivosRouteWithChildren = AppObjetivosRoute._addFileChildren(
+  AppObjetivosRouteChildren,
+)
+
+interface AppRouteChildren {
+  AppAssistenteRoute: typeof AppAssistenteRoute
+  AppInicioRoute: typeof AppInicioRoute
+  AppObjetivosRoute: typeof AppObjetivosRouteWithChildren
+  AppPerfilRoute: typeof AppPerfilRoute
+  AppPlanejamentoRoute: typeof AppPlanejamentoRoute
+  AppIndexRoute: typeof AppIndexRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAssistenteRoute: AppAssistenteRoute,
+  AppInicioRoute: AppInicioRoute,
+  AppObjetivosRoute: AppObjetivosRouteWithChildren,
+  AppPerfilRoute: AppPerfilRoute,
+  AppPlanejamentoRoute: AppPlanejamentoRoute,
+  AppIndexRoute: AppIndexRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
+  AssinaturaRoute: AssinaturaRoute,
+  CadastroRoute: CadastroRoute,
+  LoginRoute: LoginRoute,
+  OnboardingRoute: OnboardingRoute,
+  RecuperarSenhaRoute: RecuperarSenhaRoute,
+  RedefinirSenhaRoute: RedefinirSenhaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
