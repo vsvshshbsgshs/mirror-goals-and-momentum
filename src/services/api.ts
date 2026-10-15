@@ -61,7 +61,7 @@ export const api = {
     if (profileData.avatar_url !== undefined) update.avatar_url = profileData.avatar_url;
     const { data } = await supabase
       .from("profiles")
-      .update(update)
+      .update(update as any)
       .eq("id", session.user.id)
       .select()
       .single();
