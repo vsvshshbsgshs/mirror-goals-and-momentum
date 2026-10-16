@@ -4,9 +4,16 @@ class SoundManager {
   private ctx: AudioContext | null = null;
   private soundEnabled: boolean = true;
 
-  constructor() {
+  private preferenceLoaded = false;
+
+  private loadPreference() {
+    if (this.preferenceLoaded || typeof window === 'undefined') return;
+    this.preferenceLoaded = true;
     // Check localStorage for saved sound preference
-    const saved = localStorage.getItem('delux_sound_enabled');
+    let saved: string | null = null;
+    try {
+      saved = window.localStorage.getItem('delux_sound_enabled');
+    } catch { /* Use the default when storage is unavailable. */ }
     if (saved !== null) {
       this.soundEnabled = saved === 'true';
     } else {
@@ -29,12 +36,18 @@ class SoundManager {
   }
 
   public isEnabled(): boolean {
+    this.loadPreference();
     return this.soundEnabled;
   }
 
   public setEnabled(enabled: boolean) {
+    this.preferenceLoaded = true;
     this.soundEnabled = enabled;
-    localStorage.setItem('delux_sound_enabled', enabled ? 'true' : 'false');
+    if (typeof window !== 'undefined') {
+      try {
+        window.localStorage.setItem('delux_sound_enabled', enabled ? 'true' : 'false');
+      } catch { /* Sound settings remain usable without storage. */ }
+    }
     if (enabled) {
       // Play a quick pleasant preview click when enabled
       this.play('select');
@@ -42,6 +55,7 @@ class SoundManager {
   }
 
   public play(type: 'click' | 'select' | 'step' | 'success' | 'toggle' = 'click') {
+    this.loadPreference();
     if (!this.soundEnabled) return;
 
     try {
