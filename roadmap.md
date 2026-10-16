@@ -1,9 +1,9 @@
 # Migração Delux (code archive → Lovable)
 
 ## Pedido atual
-- [ ] Retirar confirmação de e-mail sem alterar outras proteções.
-- [ ] Usar a imagem enviada como assistente e reagir a cada resposta.
-- [ ] Verificar cadastro e reação do assistente.
+- [ ] Retirar confirmação de e-mail sem alterar outras proteções. Bloqueio: leitura hospedada não expõe password_hibp_enabled; desativar confirmação em Mais → Usuários → Configurações de autenticação → E-mail.
+- [x] Usar a imagem enviada como assistente e reagir a cada resposta.
+- [x] Verificar reação com mensagem real em desktop e tela estreita, restauração de histórico e build; cadastro ainda depende da configuração acima.
 
 - [x] Inspecionar arquivo ZIP (Express + JSON DB + Gemini + React Router)
 - [x] Ativar Lovable Cloud + auth por e-mail

@@ -6,6 +6,8 @@ export const Route = createFileRoute("/recuperar-senha")({
     meta: [
       { title: "Recuperar senha — Delux" },
       { name: "description", content: "Receba um link seguro para redefinir sua senha Delux." },
+      { property: "og:title", content: "Recuperar senha — Delux" },
+      { property: "og:description", content: "Receba um link seguro para redefinir sua senha Delux." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
