@@ -1,5 +1,10 @@
 # Migração Delux (code archive → Lovable)
 
+## Pedido atual
+- [ ] Retirar confirmação de e-mail sem alterar outras proteções.
+- [ ] Usar a imagem enviada como assistente e reagir a cada resposta.
+- [ ] Verificar cadastro e reação do assistente.
+
 - [x] Inspecionar arquivo ZIP (Express + JSON DB + Gemini + React Router)
 - [x] Ativar Lovable Cloud + auth por e-mail
 - [ ] Migration: profiles, preferences, goals, diagnostics, steps, missions, activity_events, conversations, messages, notifications, subscriptions
