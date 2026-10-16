@@ -11,6 +11,8 @@ export const Route = createFileRoute("/redefinir-senha")({
     meta: [
       { title: "Redefinir senha — Delux" },
       { name: "description", content: "Defina uma nova senha para sua conta Delux." },
+      { property: "og:title", content: "Redefinir senha — Delux" },
+      { property: "og:description", content: "Defina uma nova senha para sua conta Delux." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

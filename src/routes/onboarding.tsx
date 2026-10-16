@@ -7,6 +7,8 @@ export const Route = createFileRoute("/onboarding")({
     meta: [
       { title: "Comece sua jornada — Delux" },
       { name: "description", content: "Configure sua rotina e seu primeiro objetivo no Delux." },
+      { property: "og:title", content: "Comece sua jornada — Delux" },
+      { property: "og:description", content: "Configure sua rotina e seu primeiro objetivo no Delux." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

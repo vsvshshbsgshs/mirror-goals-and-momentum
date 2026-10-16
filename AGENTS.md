@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep assistant identity and motion in the shared AssistantOrb component so every placement uses the same character.
+- Trigger reply reactions from the successful send result, not history hydration, so only new assistant responses animate.

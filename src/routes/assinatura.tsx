@@ -7,6 +7,8 @@ export const Route = createFileRoute("/assinatura")({
     meta: [
       { title: "Assinatura — Delux" },
       { name: "description", content: "Gerencie seu plano Delux." },
+      { property: "og:title", content: "Assinatura — Delux" },
+      { property: "og:description", content: "Gerencie seu plano Delux." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

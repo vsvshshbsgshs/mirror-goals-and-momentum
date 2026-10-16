@@ -190,6 +190,7 @@ export const AssistantPage: React.FC = () => {
   const [messages, setMessages] = useState<AssistantMessage[]>([]);
   const [inputMessage, setInputMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [reactingMessageId, setReactingMessageId] = useState<string | null>(null);
   const [showHistory, setShowHistory] = useState(false);
   const [historySearch, setHistorySearch] = useState('');
   const [selectedMode, setSelectedMode] = useState<AssistantMode>('estrategia');
@@ -269,6 +270,12 @@ export const AssistantPage: React.FC = () => {
     scrollToBottom();
   }, [messages, loading]);
 
+  useEffect(() => {
+    if (!reactingMessageId) return;
+    const timeout = window.setTimeout(() => setReactingMessageId(null), 3900);
+    return () => window.clearTimeout(timeout);
+  }, [reactingMessageId]);
+
   // Auto-resize textarea according to content on mobile & desktop
   useEffect(() => {
     if (textareaRef.current) {
@@ -294,6 +301,7 @@ export const AssistantPage: React.FC = () => {
 
   const handleSelectConversation = async (convId: string) => {
     stopSpeaking();
+    setReactingMessageId(null);
     // On mobile, close history drawer automatically
     if (window.innerWidth < 768) {
       setShowHistory(false);
@@ -309,6 +317,7 @@ export const AssistantPage: React.FC = () => {
 
   const handleNewConversation = () => {
     stopSpeaking();
+    setReactingMessageId(null);
     // On mobile, close history drawer automatically
     if (window.innerWidth < 768) {
       setShowHistory(false);
@@ -423,6 +432,7 @@ export const AssistantPage: React.FC = () => {
     if (!text.trim() || loading) return;
 
     stopSpeaking();
+    setReactingMessageId(null);
     if (isListening && recognitionRef.current) {
       try {
         recognitionRef.current.stop();
@@ -457,6 +467,7 @@ export const AssistantPage: React.FC = () => {
         res.userMessage,
         res.assistantMessage
       ]);
+      setReactingMessageId(res.assistantMessage.id);
     } catch (err: any) {
       const errorMsg: AssistantMessage = {
         id: `err_${Date.now()}`,
@@ -723,6 +734,7 @@ export const AssistantPage: React.FC = () => {
                 size="sm"
                 isSpeaking={isSpeakingGeneral}
                 isGenerating={loading}
+                isReacting={reactingMessageId !== null}
                 title="Assistente Delux"
               />
             </div>
@@ -913,6 +925,7 @@ export const AssistantPage: React.FC = () => {
                           size="sm"
                           isSpeaking={isThisMsgSpeaking}
                           isGenerating={false}
+                          isReacting={reactingMessageId === msg.id}
                           onClick={() => handleToggleSpeak(msg)}
                           title={isThisMsgSpeaking ? 'Pausar áudio' : 'Ouvir resposta'}
                         />

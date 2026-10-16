@@ -222,3 +222,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.assistant-reply-highlight {
+  filter: drop-shadow(0 0 3px var(--ring));
+}
