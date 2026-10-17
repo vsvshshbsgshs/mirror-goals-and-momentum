@@ -69,7 +69,7 @@ export const AssistantOrb: React.FC<AssistantOrbProps> = ({
         loading="lazy"
         width={1024}
         height={1024}
-        className={`absolute inset-0 w-full h-full object-contain select-none pointer-events-none transition-opacity duration-200 ${isReacting ? `opacity-100 ${isReacting ? 'assistant-reply-highlight' : ''}` : 'opacity-0'}`}
+        className={`absolute inset-0 w-full h-full object-contain select-none pointer-events-none transition-opacity duration-200 ${isReacting ? 'opacity-100 assistant-reply-highlight' : 'opacity-0'}`}
       />
     </motion.span>
   );
