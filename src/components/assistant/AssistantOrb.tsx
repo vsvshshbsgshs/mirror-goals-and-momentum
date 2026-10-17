@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import assistantAsset from '../../assets/images/assistant-character.png.asset.json';
+import waveAsset from '../../assets/images/assistant-character-wave.png';
 
 export const assistantAvatarUrl = assistantAsset.url;
 
@@ -39,10 +40,12 @@ export const AssistantOrb: React.FC<AssistantOrbProps> = ({
     <motion.span
       className="relative inline-flex w-full h-full items-center justify-center"
       data-assistant-state={state}
+      style={isReacting ? { transformOrigin: '60% 20%' } : undefined}
       animate={reducedMotion ? { y: 0, rotate: 0, scale: 1 } : isReacting ? {
-        y: [0, -5, 0, -3, 0],
-        rotate: [0, -9, 9, -5, 0],
-        scale: [1, 1.12, 1, 1.06, 1],
+        // Aceno: personagem inclina e balança como se movesse o bracinho
+        rotate: [0, -10, 9, -10, 9, 0],
+        y: [0, -4, 0, -4, 0, 0],
+        scale: [1, 1.08, 1, 1.08, 1, 1],
       } : isSpeaking ? {
         y: [0, -2, 0], rotate: [0, -4, 4, 0], scale: [1, 1.04, 1],
       } : isGenerating ? {
@@ -57,7 +60,16 @@ export const AssistantOrb: React.FC<AssistantOrbProps> = ({
       <img
         src={imageUrl}
         alt={title}
-        className={`w-full h-full object-contain select-none pointer-events-none ${isReacting ? 'assistant-reply-highlight' : ''}`}
+        className={`absolute inset-0 w-full h-full object-contain select-none pointer-events-none transition-opacity duration-200 ${isReacting ? 'opacity-0' : 'opacity-100'}`}
+      />
+      <img
+        src={waveAsset}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        width={1024}
+        height={1024}
+        className={`absolute inset-0 w-full h-full object-contain select-none pointer-events-none transition-opacity duration-200 ${isReacting ? 'opacity-100 assistant-reply-highlight' : 'opacity-0'}`}
       />
     </motion.span>
   );
