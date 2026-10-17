@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import assistantAsset from '../../assets/images/assistant-character.png.asset.json';
+import waveAsset from '../../assets/images/assistant-character-wave.png';
 
 export const assistantAvatarUrl = assistantAsset.url;
 
