@@ -48,11 +48,7 @@ export const AssistantOrb: React.FC<AssistantOrbProps> = ({
     >
       <motion.span
         className={`relative w-[124%] max-w-none aspect-[1024/631] ${isReacting ? 'assistant-reply-highlight' : ''}`}
-        animate={reducedMotion ? { y: 0, rotate: 0, scale: 1 } : isReacting ? {
-          // Corpo quase parado, só acompanha levemente o aceno
-          y: [0, -1, 0, -1, 0, 0],
-          rotate: [0, -1.5, 1, -1.5, 1, 0],
-        } : isSpeaking ? {
+        animate={reducedMotion || isReacting ? { y: 0, rotate: 0, scale: 1 } : isSpeaking ? {
           y: [0, -2, 0], rotate: [0, -3, 3, 0],
         } : isGenerating ? {
           y: [0, -3, 0], rotate: [0, -5, 5, 0],
@@ -72,11 +68,10 @@ export const AssistantOrb: React.FC<AssistantOrbProps> = ({
           alt={title}
           className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
         />
-        <motion.img
+        {isReacting && <motion.img
           src={armUrl}
           alt=""
           aria-hidden="true"
-          loading="lazy"
           className="absolute inset-0 w-full h-full object-contain select-none pointer-events-none"
           style={{ transformOrigin: '77.5% 98%' }}
           animate={
@@ -91,7 +86,7 @@ export const AssistantOrb: React.FC<AssistantOrbProps> = ({
             repeat: isReacting && !reducedMotion ? Infinity : 0,
             ease: 'easeInOut',
           }}
-        />
+        />}
       </motion.span>
     </span>
   );
